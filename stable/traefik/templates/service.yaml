@@ -57,5 +57,5 @@ spec:
   {{- if (and (.Values.metrics.prometheus.enabled) (not (.Values.metrics.prometheus.restrictAccess)))}}
   - port: 8080
     name: metrics
-    targetPort: dash
+    targetPort: metrics
   {{- end }}

@@ -113,6 +113,10 @@ data:
         {{- end }}
         {{- end }}
       {{- end }}
+      {{- if .Values.metrics.prometheus.enabled }}
+      [entryPoints.metrics]
+      address = ":8081"
+      {{- end }}
     [kubernetes]
     {{- if .Values.kubernetes}}
       {{- if .Values.kubernetes.endpoint }}
@@ -284,7 +288,7 @@ data:
     {{- end }}
       {{- if .Values.metrics.prometheus.enabled }}
       [metrics.prometheus]
-        entryPoint = "traefik"
+        entryPoint = "metrics"
         {{- if .Values.metrics.prometheus.buckets }}
         buckets = [
           {{- range $idx, $element := .Values.metrics.prometheus.buckets }}

@@ -149,6 +149,11 @@ spec:
           {{- end }}
           protocol: TCP
         {{- end }}
+        {{- if .Values.deployment.hostPort.prometheusMetricsEnabled }}
+        - name: metrics
+          containerPort: {{ default 8081 .Values.deployment.hostPort.prometheusMetricsPort }}
+          protocol: TCP
+        {{- end }}
         args:
         - --configfile=/config/traefik.toml
         {{- range .Values.startupArguments }}

@@ -358,6 +358,7 @@ rbac:
 metrics:
   prometheus:
     enabled: false
+    # address: localhost:8081/metrics
     ## If true, prevents exposing port 8080 on the main Traefik service, reserving
     ## it to the dashboard service only
     restrictAccess: false
@@ -380,9 +381,11 @@ deployment:
     httpEnabled: false
     httpsEnabled: false
     dashboardEnabled: false
+    prometheusMetricsEnabled: false
     # httpPort: 80
     # httpsPort: 443
     # dashboardPort: 8080
+    # PrometheusMetricsPort: 8081
 sendAnonymousUsage: false
 tracing:
   enabled: false
